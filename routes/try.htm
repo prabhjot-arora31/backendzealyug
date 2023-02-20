@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trying out!</title>
     <style>
-      body{
-         background-color:blue;
+      body {
+        background-color: white;
       }
     </style>
   </head>
   <body>
     <center><h1>Sign Up</h1></center>
-    <form action="https://jealous-plum-twill.cyclic.app/api/signup" method="post">
+    <form
+      action="https://jealous-plum-twill.cyclic.app/api/signup"
+      method="post"
+    >
       Name: <input type="text" name="name" placeholder="Enter your name" />
       <br /><br />
       Email :
@@ -23,5 +26,8 @@
       <input type="password" name="password" placeholder="Enter password" />
       <button type="submit">Send</button>
     </form>
+    <br />
+    Already have an account?
+    <a href="http://localhost:3000/api/loginPage" style="color: red">Sign In</a>
   </body>
 </html>
