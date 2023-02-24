@@ -12,19 +12,22 @@ authRouter.post("/api/signup", async (req, res) => {
   try {
     const salt = await bcryptjs.genSaltSync(10);
 
-    const { name, email, password } = await req.body;
+    const { name, email, password, phone, gender, nickname, dob } =
+      await req.body;
+    console.log(phone, gender);
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ msg: "Email already exists!" });
     }
-    hashedPassword = await bcryptjs.hash(password, 8);
+    hashedPassword = await bcryptjs.hash(password, salt);
     let user = new User({
-      // name: name,
-      // email: email,
-      // password: hashedPassword,
       name,
       email,
       password: hashedPassword,
+      gender,
+      phone,
+      nickname,
+      dob,
     });
     user = await user.save();
     // res.json(user);
@@ -62,7 +65,6 @@ authRouter.post("/api/login", (req, res) => {
       if (res1) {
         // Send JWT
         let token = jwt.sign({ email: req.body.email }, "kuchbhi", {});
-
         res.status(200).json({
           token: token,
           msg: "success",

@@ -5,6 +5,15 @@ const userSchema = mongoose.Schema({
     type: String,
     trim: true,
   },
+  nickname: {
+    trim: true,
+    required: false,
+    type: String,
+  },
+  dob: {
+    required: false,
+    type: String,
+  },
   email: {
     required: true,
     type: String,
@@ -18,8 +27,16 @@ const userSchema = mongoose.Schema({
     //   message: "Please enter the valid email address",
     // },
   },
+  phone: {
+    type: Number,
+    required: false,
+  },
   password: {
     required: true,
+    type: String,
+  },
+  gender: {
+    required: false,
     type: String,
   },
 });
